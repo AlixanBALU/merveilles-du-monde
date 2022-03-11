@@ -1,0 +1,102 @@
+/* ELEMENTS QUI INFLUENT SUR TOUT LA PAGE  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,700;1,100;1,200;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+html {
+    background-color: #f1f1f1;
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    width: 960px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 50px #c5c5c5;
+    height: 1500px;
+}
+
+.svg {
+    transform: translateX(-50px);
+    width: 400px;
+    height: auto;
+    position: absolute;
+    z-index: 4;
+}
+
+.thanks {
+    font-size: 6em;
+    font-weight: bolder;
+    position: relative;
+    top: 80px;
+    left: 200px;
+    z-index: 2;
+    width: 700px;
+}
+
+.more {
+    text-align: center;
+    font-weight: bold;
+    color: #57CC99;
+    width: auto;
+}
+
+.img_more {
+    filter: invert(69%) sepia(21%) saturate(912%) hue-rotate(102deg) brightness(98%) contrast(90%);
+    margin-left:480px;
+    margin-top: -20px;
+    width: 50px;
+    transform: translateX(-25px);
+}
+
+.hide {
+    opacity: 0;
+    font-weight: bold;
+    font-size: 1.5em;
+    width: 400px;
+    margin-left: 480px;
+    transform: translate(-200px);
+    transition: 0.1s ease-out;
+}
+
+.divmore:hover+ .hide, .hide:hover {
+    opacity: 1;
+}
+
+b {
+    color: #57CC99;
+}
+
+a {
+    text-decoration: none;
+}
+
+.home {
+    border: #57CC99 solid 5px ;
+    position: absolute;
+    text-align: center;
+    width: 120px;
+    height: 50px;
+    font-weight: bolder;
+    color: #57CC99;
+    font-size: 2em;
+    margin-left: 480px;
+    top: 100%;
+    transform: translate(-60px, -100px);
+    border-radius: 30px;
+    
+}
+
+.home:hover {
+    transition: 0.3s ease-out;
+    color: white;
+    background-color: #57CC99;
+}
+
+.home:active {
+    transition: 0s;
+    color: #459b76;
+}
+

@@ -1,0 +1,101 @@
+    {% extends "base.twig" %}
+    {% block main %}
+    <!-- MAIN  Le <main role="main"> est la partie contenue de la page -->
+    <main role="main">
+        <!---- Ce Span sert a faire fonctionner la fleche du bas-->
+        <span id="top_page"></span>
+        <section>
+            <img src={{ asie.titre_fr.url_img }} alt="" />
+            <h1>
+                {% if lang == 'fr' %}
+                    {{ asie.titre_fr.principal }}
+                {% else %}
+                    {{ asie.titre_en.principal }}
+                {% endif %}
+            </h1>
+            <span id="ancre_article"></span>
+        </section>
+        <section class="contenu">
+            <h3>
+                {% if lang == 'fr' %}
+                    {{ asie.titre_fr.text | raw }}
+                {% else %}
+                    {{ asie.titre_en.text | raw }}
+                {% endif %}
+            </h3>
+            <!---- Les ID d'ancrage sont decalé par rapport a leur contenu car l'ancre se deplace trop bas de base-->
+            <section>
+                <article>
+                        {% if lang == 'fr' %}
+                            <h2>&#62; {{ asie.titre_fr.article }} :</h2>
+                            {% for article in asie.article_fr %}
+                                <p>{{ article.article | raw }}</p>
+                            {% endfor %}
+                        {% else %}
+                            <h2>&#62; {{ asie.titre_en.article }} :</h2>
+                            {% for article in asie.article_en %}
+                                <p>{{ article.article | raw }}</p>
+                            {% endfor %}
+                        {% endif %}
+                </article>
+                <article>
+                    {% if lang == 'fr' %}
+                        <h2>&#62;    {{ asie.titre_fr.table_principal }} en données :</h2>
+                    {% else %}
+                        <h2>&#62; {{ asie.titre_en.table_principal }} in data :</h2>
+                    {% endif %}
+                    <table>
+                        <thead>
+                            <tr>
+                            {% if lang == 'fr' %}
+                                <th colspan="2">{{ asie.titre_fr.table }}</th>
+                            {% else %}
+                                <th colspan="2">{{ asie.titre_en.table }}</th>
+                            {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if lang == 'fr' %}
+                                {% for data in asie.donnee_fr %}
+                                <tr>
+                                    <td>{{ data.label }}</td>
+                                    <td>{{ data.info }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                {% for data in asie.donnee_en %}
+                                <tr>
+                                    <td>{{ data.label }}</td>
+                                    <td>{{ data.info }}</td>
+                                </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </section>
+        <a href="#top_page"><img src="images/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+    </main>
+    <aside>
+        <div class="aside">
+            <ul>
+                {% for data in table.aside_data %}
+                <li>
+                    <a href={{ data.ancre }}>
+                        <div class="boite_lien">
+                            <img src={{ data.image_url }} alt="" />
+                            {% if lang == 'fr' %}
+                                {{ data.label_fr }}
+                            {% else %}
+                                {{ data.label_en }}
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cache"></div>
+    </aside>
+    {% endblock main %}

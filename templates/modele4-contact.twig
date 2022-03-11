@@ -1,0 +1,112 @@
+    {% extends "base.twig" %}
+    {% block main %}
+    <main role="main">
+        <!-- Ce Span sert a faire fonctionner la fleche du bas-->
+        <span id="top_page"></span>
+        <a href="#top_page"><img src="../img/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+        <h3>
+            {% if lang == 'fr' %}
+                {{ contact.titre_fr | raw }}
+            {% else %}
+                {{ contact.titre_en | raw }}
+            {% endif %}
+        </h3>
+        <form {% if lang == 'fr' %}action="reception.php"{% else %}action="reception_eng.php"{% endif %} method="POST">
+            <fieldset>
+                <legend>
+                    {% if lang == 'fr' %}
+                        {{ contact.form_fr.legend1 }}
+                    {% else %}
+                        {{ contact.form_en.legend1 }}
+                    {% endif %}
+                </legend>
+                {% if lang == 'fr' %}
+                    {% for input in contact.radio %}
+                        <input type="radio" name="reccurence"> <label>{{ input.label_fr }}</label>
+                    {% endfor %}
+                {% else %}
+                    {% for input in contact.radio %}
+                        <input type="radio" name="reccurence"> <label>{{ input.label_en }}</label>
+                    {% endfor %}
+                {% endif %}
+            </fieldset>
+
+            <fieldset> 
+                <legend>
+                    {% if lang == 'fr' %}
+                        {{ contact.form_fr.legend2 }}
+                    {% else %}
+                        {{ contact.form_en.legend2 }}
+                    {% endif %}
+                </legend>
+                {% if lang == 'fr' %}
+                    {% for input in contact.checkbox %}
+                        <input name="checkbox" type="checkbox"><label>{{ input.label_fr }}</label>
+                    {% endfor %}
+                {% else %}
+                    {% for input in contact.checkbox %}
+                        <input name="checkbox" type="checkbox"><label>{{ input.label_en }}</label>
+                    {% endfor %}
+                {% endif %}
+            </fieldset>
+            <fieldset><legend>{% if lang == 'fr' %}{{ contact.form_fr.legend3 }}{% else %}{{ contact.form_en.legend3 }}{% endif %}</legend>
+                <p>
+                    <label>{% if lang == 'fr' %}{{ contact.form_fr.label_age | raw }}{% else %}{{ contact.form_en.label_age | raw }}{% endif %}</label>
+                    <input required name="age" type="number"  min="5" max="150">
+                </p>
+                    <p><label>{% if lang == 'fr' %}{{ contact.form_fr.label_option | raw }}{% else %}{{ contact.form_en.label_option | raw }}{% endif %}</label>
+                        <select name="statut" size="1">
+                            <option selected value="etudiant">{% if lang == 'fr' %}{{ contact.form_fr.option1 }}{% else %}{{ contact.form_en.option1 }}{% endif %}</option>
+                            <option value="actif">{% if lang == 'fr' %}{{ contact.form_fr.option2 }}{% else %}{{ contact.form_en.option2 }}{% endif %}</option>
+                            <option value="retraite">{% if lang == 'fr' %}{{ contact.form_fr.option3 }}{% else %}{{ contact.form_en.option3 }}{% endif %}</option>
+                        </select>
+                    </p>
+            </fieldset>
+            <fieldset> <legend>{% if lang == 'fr' %}{{ contact.form_fr.legend4 }}{% else %}{{ contact.form_en.legend4 }}{% endif %}</legend>
+                <p>
+                    <label>{% if lang == 'fr' %}{{ contact.form_fr.champ1 | raw }}{% else %}{{ contact.form_en.champ1 | raw }}{% endif %}</label>
+                    <input required name="name" type="text" size="30" maxlength="100" >  
+                </p>
+            </fieldset>
+        
+            <fieldset> <legend>{% if lang == 'fr' %}{{ contact.form_fr.champ2 }}{% else %}{{ contact.form_en.champ2 }}{% endif %}</legend>
+                <p>
+                    <textarea name="comments" cols="50" rows="10" placeholder="Vous pouvez insérer vos commentaires ici..."></textarea> 
+                </p>
+            </fieldset>
+            <fieldset>
+                <p>
+                    {% if lang == 'fr' %}
+                        <input class="button" name="init" type="reset" value={{ contact.form_fr.value1 }}>
+                        <input class="button" name="soumettre" type="submit" value={{ contact.form_fr.value2 }}>
+                    {% else %}
+                        <input class="button" name="init" type="reset" value={{ contact.form_en.value1 }}>
+                        <input class="button" name="soumettre" type="submit" value={{ contact.form_en.value2 }}>
+                    {% endif %}
+                </p>
+            </fieldset>
+        </form>
+    </main>
+    <!----  ASIDE  Partie supplementaire sur le coté du site, dans notre cas, il servira a faciliter la navigation-->
+    <aside>
+        <div class="aside">
+            <ul>
+                {% for data in table.aside_data_contact %}
+                <li>
+                    <a href={{ data.ancre }}>
+                        <div class="boite_lien">
+                            <img src={{ data.image_url }} alt="" />
+                            {% if lang == 'fr' %}
+                                {{ data.label_fr }}
+                            {% else %}
+                                {{ data.label_en }}
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cache"></div>
+    </aside>
+    {% endblock %}

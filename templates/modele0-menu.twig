@@ -1,0 +1,63 @@
+    {% extends "base.twig" %}
+    {% block main %}
+    <!-- MAIN  Le <main role="main"> est la partie contenue de la page -->
+    <main role="main">
+        <!---- Ce Span sert a faire fonctionner la fleche du bas-->
+        <span id="top_page"></span>
+        <img src="images/angkor.jpg" alt="" />
+        <section class="contenu">
+            {% if lang == 'fr' %}
+                <h1>{{ index.titre_fr.h1 }}</h1>
+                <h3 id="afrique">{{ index.titre_fr.h3 | raw }}</h3>
+            {% else %}
+                <h1>{{ index.titre_en.h1 }}</h1>
+                <h3 id="afrique">{{ index.titre_en.h3 | raw }}</h3>
+            {% endif %}
+            <!---- Les ID d'ancrage sont decalé par rapport a leur contenu car l'ancre se deplace trop bas de base-->
+            <section>
+                {% if lang == 'fr' %}
+                    {% for table in index.article_fr %}
+                        <article>
+                            <a href={{ table.href }} title={{ table.title }}>
+                                <h2 id="{{ table.id }}">&#62; {{ table.h2 }}</h2>
+                            </a>
+                            <p>{{ table.article | raw }}</p>
+                        </article>
+                    {% endfor %}
+                {% else %}
+                    {% for table in index.article_en %}
+                        <article>
+                            <a href={{ table.href }} title={{ table.title }}>
+                                <h2 id="{{ table.id }}">&#62; {{ table.h2 }}</h2>
+                            </a>
+                            <p>{{ table.article | raw }}</p>
+                        </article>
+                    {% endfor %}
+                {% endif %}
+            </section>
+        </section>
+        <a href="#top_page"><img src="images/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+    </main>
+    <!-- ASIDE  Partie supplementaire sur le coté du site, dans notre cas, il servira a faciliter la navigation-->
+    <aside>
+        <div class="aside">
+            <ul>
+                {% for data in table.aside_data_menu %}
+                <li>
+                    <a href={{ data.ancre }}>
+                        <div class="boite_lien">
+                            <img src={{ data.image_url }} alt="" />
+                            {% if lang == 'fr' %}
+                                {{ data.label_fr }}
+                            {% else %}
+                                {{ data.label_en }}
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cache"></div>
+    </aside>
+    {% endblock %}

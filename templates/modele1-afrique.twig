@@ -1,0 +1,74 @@
+    {% extends "base.twig" %}
+    {% block main %}
+    <main role="main">
+        <!---- Ce Span sert a faire fonctionner la fleche du bas-->
+        <span id="top_page"></span>
+        <section class="contenu">
+            {# Le | raw permet d'afficher le soulignement du tritre principal #}
+            <h3>
+                {% if lang == 'fr' %}
+                    {{ afrique.titre_fr.principal | raw }}  {# La balise {{ var | raw }} sert a forcer les balises lors du renvois sur les client. Ainsi on peut faire fonctionner les balises <b> #}
+                {% else %}
+                    {{ afrique.titre_en.principal | raw }}
+                {% endif %}
+            </h3>
+            <!---- Les ID d'ancrage sont decalé par rapport a leur contenu car l'ancre se deplace trop bas de base-->
+            <section>
+                <h2>&#62; 
+                    {% if lang == 'fr' %}
+                        {{ afrique.titre_fr.article | raw }} :
+                    {% else %}
+                        {{ afrique.titre_en.article | raw }} :
+                    {% endif %}
+                    
+                </h2>
+                <span id="ancre_article2"></span>
+                <section class="flexbox">
+                    {% if lang == 'fr' %}
+                        {% for article in afrique.article_data_fr %}
+                            <article {% if afrique.article_fr.trend %}class='ontrend' title='Article Recommended'{% endif %}>
+                                <img class={{ article.class_img }} src={{ article.img_url }} alt="" />
+                                {% if article.trend %}
+                                    <p class="ontrend">Cet Article est tendance !</p>
+                                {% endif %}
+                                <p>{{ article.article | raw }}</p>
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                        {% for article in afrique.article_data_en %}
+                        <article>
+                            <img class={{ article.class_img }} src={{ article.img_url }} alt="" />
+                            {% if article.trend %}
+                                <p class="ontrend">This Article is trendy !</p>
+                            {% endif %}
+                            <p>{{ article.article | raw }}</p>
+                        </article>
+                        {% endfor %}
+                    {% endif %}
+                </section>
+            </section>
+        </section>
+        <a href="#top_page"><img src="images/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+    </main>
+    <aside>
+        <div class="aside">
+            <ul>
+                {% for data in table.aside_data %}
+                <li>
+                    <a href={{ data.ancre }}>
+                        <div class="boite_lien">
+                            <img src={{ data.image_url }} alt="" />
+                            {% if lang == 'fr' %}
+                                {{ data.label_fr }}
+                            {% else %}
+                                {{ data.label_en }}
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cache"></div>
+    </aside>
+    {% endblock %}

@@ -1,0 +1,529 @@
+/* ELEMENTS QUI INFLUENT SUR TOUT LA PAGE  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,700;1,100;1,200;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+html {
+    background-color: #f1f1f1;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    width: 960px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 50px rgb(194, 194, 194);
+}
+
+.contenu,
+footer {
+    padding: 10px;
+}
+
+h1,
+h2 {
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+section {
+    /* On vise tout le CSS */
+    border: 0px none;
+}
+
+/*  HEADER  */
+
+.wrap {
+    position: fixed;
+    width: 960px;
+    z-index: 10;
+}
+
+/* on separt les elements du header en 2 categorie : flex gauche et flex droit pour le positionnement en flexbox */
+/* flexbox -> https://css-tricks.com/snippets/css/a-guide-to-flexbox/#order */
+header {
+    background-color: #467061;
+    margin-top: -16px;
+}
+
+.container_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*element de type flex qui se trouve coté droit */
+.flex_gauche {
+    float: right;
+    display: flex;
+    font-size: 1.875rem;
+    font-weight: 600;
+}
+
+.flex_gauche>img {
+    width: 30px;
+    height: auto;
+    padding-right: 20px;
+}
+
+/*flex gauche */
+.flex_droite>a {
+    display: flex;
+    font-size: 1.25rem;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #003e29;
+    color: white;
+    border: #003e29 solid 3px;
+    border-radius: 20px;
+    transition-duration: 0.2s;
+    font-weight: bolder;
+
+}
+
+.flex_droite>a:hover {
+    background-color: #467061;
+    color: #003e29;
+}
+
+.flex_droite>a:active {
+    color: #467061;
+    background-color: #003e29;
+}
+
+/*  NAV  */
+
+nav {
+    background-color: #f6fafb;
+}
+
+/*  MENU du nav */
+.menu {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: -16px;
+    font-size: 1.438rem;
+}
+
+.menu li {
+    text-align: center;
+    margin: 0 0.9rem;
+}
+
+.menu>li {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.menu a {
+    transition: 0.3s ease-out;
+}
+
+.menu a:hover {
+    color: #003e29;
+}
+
+/* Sous menu */
+/* avec le selecteur ".sous_menu>ul>li" on vise que les sous liste (ou liste dans la classe ".sous_menu") */
+.sous_menu {
+    display: none;
+    background-color: #f6fafb;
+    margin-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+    /*Parce que : HautG, HautD, BasD, BasG*/
+    transform: translateX(-25%);
+}
+
+ul li:hover .sous_menu {
+    display: block;
+    position: absolute;
+    width: 200px;
+}
+
+.sous_menu>ul {
+    padding-left: 0px;
+    /*le container de tous les sous-menus*/
+    border: 0px solid #f6fafb;
+    padding-top: 10px;
+}
+
+.sous_menu>ul>li {
+    font-size: 1.125rem;
+    font-weight: bold;
+    border: 3px solid #f6fafb;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sous_menu>ul>li:hover {
+    border: 3px solid #003e29;
+}
+
+.sous_menu>ul>li:active {
+    border: 3px solid #000000;
+}
+
+/* le .active est une classe  qui sera reccurente, on aura juste a le deplacer en fonction des pages pour donner une impression de "cliqué" */
+/* ,active a mettre dans le a */
+.active {
+    background-color: #003e29;
+    color: white;
+    border: 3px solid #003e29;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.active:hover {
+    background-color: white;
+    color: #003e29;
+}
+
+/*Permet de mettre la fleche deroulante en bleu #003e29 */
+
+.active+.deroulant {
+    filter: invert(13%) sepia(37%) saturate(3665%) hue-rotate(142deg) brightness(100%) contrast(101%);
+}
+
+.active:active {
+    color: white;
+    background-color: #003e29;
+}
+
+/* ,active_li a mettre dans le li dans le sous menu */
+.sous_menu>ul>.active_li {
+    border: 3px solid #003e29;
+    border-style: dotted;
+}
+
+.deroulant {
+    display: block;
+    float: right;
+    margin-top: 3px;
+    width: 30px;
+    transition: 0.3s ease-out;
+}
+
+.deroulant:hover {
+    transform: rotate(-180deg);
+}
+
+.nav_element:hover .deroulant {
+    transform: rotate(-180deg);
+    filter: invert(13%) sepia(37%) saturate(3665%) hue-rotate(142deg) brightness(100%) contrast(101%);
+    /*permet de changer la couleur du fichier svg (ici en bleu #003e29) -> https://codepen.io/sosuke/pen/Pjoqqp */
+}
+
+/*  MAIN  */
+
+span~section>img {
+    width: 600px;
+    height: auto;
+    margin: 140px 0px 0px 50px;
+}
+
+h1 {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 7rem;
+    font-weight: bolder;
+    color: #dbdbdb;
+    position: absolute;
+    top: 120px;
+    letter-spacing: -8px;
+    margin-left: 300px;
+    width: 700px;
+    text-shadow: 5px 5px 0px #003e29;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    padding-left: 40px;
+    font-weight: bold;
+    color: #003e29;
+    transition: 0.2s ease-out;
+}
+
+article:nth-child(2) {
+    margin-top: -30px;
+}
+
+.ontrend {
+    background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(255, 217, 0));
+    -webkit-background-clip: text;
+    background-clip : text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2::first-letter {
+    font-size: 2.75rem;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 3.125rem;
+    margin: 70px 100px 70px 70px;
+}
+
+article:nth-child(1){
+    display: flex;
+}
+
+article p {
+    margin-right: 50px;
+}
+
+figure {
+    position: relative;
+    display: inline-block;
+}
+
+/* On est obligé de les mettre en position absolute pour des raison de placement (dans les images) */
+figure figcaption {
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    transform: translateY(-100%);
+    /*On repositionne l'element pour qu'il ne depasse pas de nos images */
+    background-color: #467061;
+    color: white;
+    padding: 10px;
+    overflow: hidden;
+    max-height: 100%;
+    transition: 0.2s ease-out;
+}
+
+figure:hover figcaption {
+    opacity: 1;
+    /* J'ai decidé d'utiliser opacity (et non display:block;) pour permettre une transition plus douce */
+}
+
+.figure {
+    display: flex;
+    justify-content:center;
+}
+/* Ce selecteur permet de cibler toutes les images ayant un attribut alt commencant par "fig" */
+/*On utilise ce selecteur et non un "direct" pour que le css s'adapte en meme temps que le twig */
+img[alt^="illustration"] {
+    margin-left: 50px;
+    width: 500px;
+    float: left;
+    padding-right: 30px;
+}
+
+img[alt^="fig"] {
+    float: left;
+    height: 190px;
+}
+
+h2~article {
+    padding: 40px 40px 40px 0px;
+}
+
+/* Ceci est la fleche qui permet a un utilisateur de remonter facilement en haut de la page, surtout pour les utilisateurs ayant des difficultées */
+.fleche_haut {
+    width: 50px;
+    height: auto;
+    transform: translateX(-110px);
+    border: 7px solid #003e29;
+    border-radius: 30px;
+    transition: 0.2s ease-out;
+    margin: 30px 30px 30px 100%;
+    /* top | right | bottom | left */
+}
+
+.fleche_haut:hover {
+    border-color: #00291b;
+}
+
+.fleche_haut:active {
+    border-color: black;
+}
+
+
+/*  ASIDE  */
+
+.menu_deroule {
+    top: 0px;
+    position: fixed;
+    right: 100%;
+    /*transform: translateX(100%);*/
+    width: 10%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.171);
+    z-index: 60;
+}
+
+
+.derouleur_aside {
+    position: fixed;
+    top:0px;
+    right: 100%;
+    transform: translateX(100%);
+    width: 2.5%;
+    height: 100%;
+    background-color: purple;
+    z-index: 20;
+}
+
+.derouleur_aside>img {
+    width: 90%;
+    height: auto;
+    z-index: 40;
+    margin: auto;
+}
+
+.derouleur_aside>img:active .menu_deroule {
+    opacity: 0;
+}
+
+/*  ASIDE --- */
+.aside  {
+    top: 300px;
+    position: fixed;
+    transform: translateX(912px);
+    font-size: 20px;
+}
+
+.aside img {
+    width: 50px;
+    height: 50px;
+}
+
+.aside ul {
+    padding: 0px;
+}
+
+.aside .boite_lien {
+    display: flex;
+    background-color: #003e29;
+    border-radius: 5px;
+    align-items: center;
+    gap: 10px;
+    transition: 0.4s cubic-bezier(0.23,1,0.32,1);
+    padding-right: 30px;    
+}
+
+.boite_lien {
+    width: 300px;
+}
+
+.aside a {
+    margin: 0px;
+    font-weight: bold;
+    color: white;
+}
+
+.aside .boite_lien:hover {
+    transform: translateX(-150px);
+}
+
+/* Seul moyen de pouvoir centre l'ancre sur l'article voulu */
+#ancre_article {
+    position: absolute;
+    transform: translateY(-250px);
+}
+
+/* Avec une image de simulation de l'ombre j'ai pu faire comme si l'ombre passait par dessus la boite */
+.cache {
+    position: fixed;
+    top: 300px;
+    /*background-color: #f1f1f1;*/
+    background-image: url("../images/objet_cache.jpg");
+    transform: translateX(960px);
+    width: 400px;
+    height: 320px;
+}
+/*  FOOTER  */
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    text-align: center;
+    background-color: #467061;
+    font-size: 1.063rem;
+}
+
+.auteur {
+    margin-top: -10px;
+}
+
+.auteur>img {
+    margin-top: -20px;
+    width: 100px;
+    height: auto;
+}
+
+.footer_flex2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer_flex2>p {
+    font-weight: bold;
+    color: #003e29;
+}
+
+.footer_flex2 ul li a{
+    font-weight: bold;
+    color: #003e29;
+}
+
+.footer_flex2 ul {
+    text-align: start;
+    font-size: 10px;
+    position: absolute;
+    margin: 90px 0px 0px 90px ;
+    width: 200px;
+}
+
+
+.contact {
+    background-color: #003e29;
+    border: 5px solid #003e29;
+    border-radius: 23px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease-out;
+    padding: -3px 0px -3px 0px;
+}
+
+.contact:hover {
+    background-color: #467061;
+    color: #003e29;
+}
+
+.contact:active {
+    background-color: #003e29;
+    color: #467061;
+}
+
+.plan_site {
+    color: #003e29;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}

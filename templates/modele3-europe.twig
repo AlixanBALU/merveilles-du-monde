@@ -1,0 +1,88 @@
+    {% extends "base.twig" %}
+    {% block main %}
+    <main role="main">
+        <span id="top_page"></span>
+        <section>
+            {% if lang == 'fr' %}
+                <img src={{ europe.titre_fr.url_img }} alt={{ europe.titre_fr.alt_img}} />
+                <h1>{{ europe.titre_fr.page }}</h1>
+            {% else %}
+                <img src={{ europe.titre_en.url_img }} alt={{ europe.titre_en.alt_img}} />
+                <h1>{{ europe.titre_en.page }}</h1>
+            {% endif %}
+        </section>
+        <section>
+            <section>
+                <span id="ancre_article"></span>
+                {% if lang == 'fr' %}
+                    <h2>&#62; {{ europe.titre_fr.heading }} :</h2>
+                {% else %}
+                    <h2>&#62; {{ europe.titre_en.heading }} :</h2>
+                {% endif %}
+                <article>
+                    {% if lang == 'fr' %}
+                        {% for article in europe.article_fr %}
+                            <img src={{ article.url_img }} alt={{ article.alt_img }} />
+                            <p>{{ article.article | raw }}</p>
+                            <br>
+                        {% endfor %}
+                    {% else %}
+                        {% for article in europe.article_en %}
+                            <img src={{ article.url_img }} alt={{ article.alt_img }} />
+                            <p>{{ article.article | raw }}</p>
+                            <br>
+                        {% endfor %}
+                    {% endif %}
+                </article>
+            </section>
+            <article>
+                {% if lang == 'fr' %}
+                    <h2>&#62; Quelques images : </h2>
+                {% else %}
+                    <h2>&#62; Some pictures : </h2>
+                {% endif %}
+                <div class="figure">
+                    {% if lang == 'fr' %}
+                        {% for table in europe.figure %}
+                        <figure role="figure">
+                            <img src={{ table.url_img }} alt={{ table.alt_img }} />
+                            <figcaption>{{ table.caption_fr }}</figcaption>
+                        </figure>
+                        {% endfor %}
+                    {% else %}
+                        {% for table in europe.figure %}
+                        <figure role="figure">
+                            <img src={{ table.url_img }} alt={{ table.alt_img }} />
+                            <figcaption>{{ table.caption_en }}</figcaption>
+                        </figure>
+                        {% endfor %}
+                    {% endif %}
+                    </figure>
+                </div>
+            </article>
+        </section>
+        <a href="#top_page"><img src="images/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+    </main>
+    <!----  ASIDE  Partie supplementaire sur le coté du site, dans notre cas, il servira a faciliter la navigation-->
+    <aside>
+        <div class="aside">
+            <ul>
+                {% for data in table.aside_data %}
+                <li>
+                    <a href={{ data.ancre }}>
+                        <div class="boite_lien">
+                            <img src={{ data.image_url }} alt="" />
+                            {% if lang == 'fr' %}
+                                {{ data.label_fr }}
+                            {% else %}
+                                {{ data.label_en }}
+                            {% endif %}
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="cache"></div>
+    </aside>
+    {% endblock main %}

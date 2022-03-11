@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang={{ lang }}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href={{ css }}>
+    <title>{{ titre }}</title>
+</head>
+
+<body>
+    <!---- la class "wrap" sert à pouvoir reunir dans un seul et unique block le header et le nav pour ameliorer le positionnement-->
+    <div class="wrap">
+        <header role="banner">
+            <hgroup>
+                <ul class="container_header" title={% if lang == 'fr' %}'Retour au menu'{% else %}'Back to home'{% endif %}>
+                    <li>
+                        <a href={% if lang == 'fr' %}'index.php'{% else %}'index_eng.php'{% endif %}>
+                            <div class="flex_gauche">
+                                <img src="images/logo.svg" alt="" />
+                                {% if lang == 'fr' %}
+                                    Les Merveilles du monde
+                                {% else %}
+                                    The wonders of the world
+                                {% endif %}
+                            </div>
+                        </a>
+                    </li>
+                    <li class="flex_droite" title={% if lang == 'fr' %}'Contactez-moi'{% else %}'Contact me'{% endif %}><a href= {{ lien_lang }}>{% if lang == 'fr' %}ENG{% else %}FR{% endif %}</a></li>
+                </ul>
+            </hgroup>
+        </header>
+        <nav role="navigation">
+            <ul class="menu">
+                <!---- L'ID #active sert a definir l'element de la page dans laquelle l'utilisateur est, ses regles d'utilisation sont dans le CSS-->
+                <li>
+                    <a href= {% if lang == 'fr' %}'index.php'{% else %}'index_eng.php'{% endif %} {{ active0 }}>
+                        {% if lang == 'fr' %}Accueil{% else %}Home{% endif %}
+                    </a>
+                </li>
+                <li class="nav_element">
+                    <a href={% if lang == 'fr' %}'danakil.php'{% else %}'danakil_eng.php'{% endif %} {{ active1 }}>
+                        {% if lang == 'fr' %}Afrique{% else %}Africa{% endif %}
+                    </a>
+                    <img class="deroulant" src="images/deroulant.svg" alt="" />
+                    <!---- On créé des <li> dans des <li> pour faire le menu deroulant-->
+                    <div class="sous_menu">
+                        <ul>
+                            <li {{ active1_li1 }}>
+                                <a href={% if lang == 'fr' %}'danakil.php'{% else %}'danakil_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Le désert du Danakil{% else %}The Danakil Desert{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active1_li2 }}>
+                                <a href={% if lang == 'fr' %}'ouzoud.php'{% else %}'ouzoud_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Les Cascades d’Ouzoud{% else %}Ouzoud Waterfalls{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active1_li3 }}>
+                                <a href={% if lang == 'fr' %}'sahara.php'{% else %}'sahara_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Le Desert du Sahara{% else %}The desert of Sahara{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active1_li4 }}>
+                                <a href={% if lang == 'fr' %}'gizeh.php'{% else %}'gizeh_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Les pyramides de Gizeh{% else %}The pyramids of Giza{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active1_li5 }}>
+                                <a href={% if lang == 'fr' %}'namib.php'{% else %}'namib_eng.php'{% endif %}>
+                                {% if lang == 'fr' %}Le désert du Namib{% else %}The Namib Desert{% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav_element">
+                    <a href={% if lang == 'fr' %}'montagne_kii.php'{% else %}'montagne_kii_eng.php'{% endif %} {{ active2 }}>{% if lang == 'fr' %}Asie{% else %}Asia{% endif %}</a>
+                    <img class="deroulant" src="images/deroulant.svg" alt="" />
+                    <div class="sous_menu">
+                        <ul>
+                            <li {{ active2_li1 }}>
+                                <a href={% if lang == 'fr' %}'montagne_kii.php'{% else %}'montagne_kii_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Chaine de montagnes Kii{% else %}Kii mountain range{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active2_li2 }}>
+                                <a href={% if lang == 'fr' %}'muraille_chine.php'{% else %}'muraille_chine_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Grande Muraille de Chine{% else %}Great Wall of China{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active2_li3 }}>
+                                <a href={% if lang == 'fr' %}'hanoi.php'{% else %}'hanoi_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}La vieille ville de Hanoï{% else %}Hanoï old town{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active2_li4 }}>
+                                <a href={% if lang == 'fr' %}'angkor.php'{% else %}'angkor_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Le temple d’Angkor{% else %}The temple of Angkor{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active2_li5 }}>
+                                <a href={% if lang == 'fr' %}'pagan.php'{% else %}'pagan_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Royaume de Pagan{% else %}Kingdom of Pagan{% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav_element">
+                    <a href={% if lang == 'fr' %}'alhambra.php'{% else %}'alhambra_eng.php'{% endif %} {{ active3 }}>Europe</a> {# S'ecrit pareil en Anglais #}
+                    <img class="deroulant" src="images/deroulant.svg" alt="" />
+                    <div class="sous_menu">
+                        <ul>
+                            <li {{ active3_li1 }}>
+                                <a href={% if lang == 'fr' %}'alhambra.php'{% else %}'alhambra_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}L’Alhambra Grenade{% else %}The Alhambra Granada{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active3_li2 }}>
+                                <a href={% if lang == 'fr' %}'cascades_tufs.php'{% else %}'cascades_tufs_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Les Cascades des Tufs{% else %}The Tufs Waterfalls{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active3_li3 }}>
+                                <a href={% if lang == 'fr' %}'skye.php'{% else %}'skye_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}L'île de Skye{% else %}Isle of Skye{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active3_li4 }}>
+                                <a href={% if lang == 'fr' %}'sagrada_familia.php'{% else %}'sagrada_familia_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}La sagrada familia{% else %}The Sagrada Familia{% endif %}
+                                </a>
+                            </li>
+                            <li {{ active3_li5 }}>
+                                <a href={% if lang == 'fr' %}'chateau_versailles.php'{% else %}'chateau_versailles_eng.php'{% endif %}>
+                                    {% if lang == 'fr' %}Les châteaux de versaille{% else %}Versailles Palaces{% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href={% if lang == 'fr' %}'contact.php'{% else %}'contact_eng.php'{% endif %} {{ active4 }}>Contact</a>
+                </li> {# S'ecrit pareil en Anglais #}
+            </ul>
+        </nav>
+    </div>
+    {% block main %}
+    {% endblock main %}
+    <!-- FOOTER  il est la partie descriptive basse du site -->
+    <span id="footer"></span>
+    <footer role="contentinfo">
+        <!---- L'arborescence est pensée pour etre utilisé en tant qu'elements "flexbox" -->
+        <div class="auteur">
+            <h4>{% if lang == 'fr' %}Auteur : {% else %}Author : {% endif %}Alixan BALU</h4>
+            <img src="images/signature.png" alt="signature" />
+        </div>
+        <div class="footer_flex2">
+            <a href={% if lang == 'fr' %}'contact.php'{% else %}'contact_eng.php'{% endif %} class="contact">
+                <p>CONTACT</p>
+            </a>
+            <p>{% if lang == 'fr' %}Plan du site{% else %}Website map{% endif %} &#62;</p>
+            <ul>
+                <li><a href={% if lang == 'fr' %}'index.php'{% else %}'index_eng.php'{% endif %}>{% if lang == 'fr' %}Accueil{% else %}Home{% endif %}</a></li>
+                <li><a href={% if lang == 'fr' %}'danakil.php'{% else %}'danakil_eng.php'{% endif %}>{% if lang == 'fr' %}Afrique{% else %}Africa{% endif %} &#62;</a> 1, 2, 3, 4, 5</li>
+                <li><a href={% if lang == 'fr' %}'montagne_kii.php'{% else %}'montagne_kii_eng.php'{% endif %}>{% if lang == 'fr' %}Asie{% else %}Asia{% endif %} &#62;</a> 1, 2, 3, 4, 5</li>
+                <li><a href={% if lang == 'fr' %}'alhambra.php'{% else %}'alhambra_eng.php'{% endif %}>Europe &#62;</a> 1, 2, 3, 4, 5</li>
+                <li><a href={% if lang == 'fr' %}'contact.php'{% else %}'contact_eng.php'{% endif %}>Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
