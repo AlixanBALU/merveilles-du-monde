@@ -1,0 +1,408 @@
+/*-------------- ELEMENTS QUI INFLUENT SUR TOUT LA PAGE ----------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,700;1,100;1,200;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,500;1,700;1,900&display=swap');
+
+html {
+    background-color: #f1f1f1;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    width: 960px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 0px 50px rgb(197, 197, 197);
+}
+
+
+.contenu,
+footer {
+    padding: 10px;
+}
+
+h1,
+h2 {
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style-type: none;
+}
+
+section {
+    /* On vise tout le CSS */
+    border: 0px none;
+}
+
+/* --------------- HEADER --------------- */
+
+.wrap {
+    position: fixed;
+    width: 960px;
+    z-index: 10;
+}
+
+/* on separt les elements du header en 2 categorie : flex gauche et flex droit pour le positionnement en flexbox */
+/* flexbox -> https://css-tricks.com/snippets/css/a-guide-to-flexbox/#order */
+header {
+    background-color: #f1893c;
+    margin-top: -16px;
+}
+
+.container_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*element de type flex qui se trouve coté droit */
+.flex_gauche {
+    float: right;
+    display: flex;
+    font-size: 1.875rem;
+    font-weight: 600;
+}
+
+.flex_gauche>img {
+    width: 30px;
+    height: auto;
+    padding-right: 20px;
+}
+
+/*flex gauche */
+.flex_droite>a {
+    display: flex;
+    font-size: 1.25rem;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #5a3d2a;
+    color: white;
+    border: #5a3d2a solid 3px;
+    border-radius: 20px;
+    transition-duration: 0.2s;
+
+}
+
+.flex_droite>a:hover {
+    background-color: #f1893c;
+    color: #5a3d2a;
+}
+
+.flex_droite>a:active {
+    color: #f1893c;
+    background-color: #5a3d2a;
+}
+
+/* ------------- NAV --------------- */
+
+nav {
+    background-color: #f6fafb;
+}
+
+/* --------- MENU du nav-------- */
+.menu {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: -16px;
+    font-size: 1.438rem;
+}
+
+.menu li {
+    text-align: center;
+    margin: 0 0.9rem;
+}
+
+.menu>li {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.menu a {
+    transition: 0.3s ease-out;
+}
+
+.menu a:hover {
+    color: #5a3d2a;
+}
+
+/* Sous menu */
+/* avec le selecteur ".sous_menu>ul>li" on vise que les sous liste (ou liste dans la classe ".sous_menu") */
+.sous_menu {
+    display: none;
+    background-color: #f6fafb;
+    margin-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+    /*Parce que : HautG, HautD, BasD, BasG*/
+    transform: translateX(-25%);
+}
+
+ul li:hover .sous_menu {
+    display: block;
+    position: absolute;
+    width: 200px;
+}
+
+.sous_menu>ul {
+    padding-left: 0px;
+    /*le container de tous les sous-menus*/
+    border: 0px solid  #f6fafb ;
+    padding-top: 10px;
+}
+
+.sous_menu>ul>li {
+    font-size: 1.125rem;
+    font-weight: bold;
+    border:  3px solid  #f6fafb;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sous_menu>ul>li:hover {
+    border: 3px solid  #5a3d2a;
+}
+
+.sous_menu>ul>li:active {
+    border:  3px solid #000000;
+}
+
+/* le .active est une classe  qui sera reccurente, on aura juste a le deplacer en fonction des pages pour donner une impression de "cliqué" */
+/* ,active a mettre dans le a */
+.active {
+    background-color: #5a3d2a;
+    color: white;
+    border: 3px solid #5a3d2a;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.active:hover {
+    background-color: white;
+    color: #5a3d2a;
+}
+
+/*Permet de mettre la fleche deroulante en bleu #5a3d2a */
+
+.active+.deroulant {
+    filter: invert(20%) sepia(6%) saturate(5575%) hue-rotate(341deg) brightness(87%) contrast(76%);
+}
+
+.active:active {
+    color: white;
+    background-color: #5a3d2a;
+}
+
+/* ,active_li a mettre dans le li dans le sous menu */
+.sous_menu>ul>.active_li {
+    border:  3px solid #5a3d2a ;
+    border-style: dotted;
+}
+
+.deroulant {
+    display: block;
+    float: right;
+    margin-top: 3px;
+    width: 30px;
+    transition: 0.3s ease-out;
+}
+
+.deroulant:hover {
+    transform: rotate(-180deg);
+}
+
+.nav_element:hover .deroulant {
+    transform: rotate(-180deg);
+    filter: invert(20%) sepia(6%) saturate(5575%) hue-rotate(341deg) brightness(87%) contrast(76%);
+    /*permet de changer la couleur du fichier svg (ici en bleu #5a3d2a) -> https://codepen.io/sosuke/pen/Pjoqqp */
+}
+
+/* ------------ MAIN ----------- */
+
+main>span~img {
+    width: 960px;
+    height: auto;
+    margin-top: 60px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    padding-left: 40px;
+    font-weight: bold;
+    color: #5a3d2a;
+    transition: 0.2s ease-out;
+}
+
+h2::first-letter {
+    font-size: 2.75rem;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 3.125rem;
+    margin-left: 70px;
+    margin-top: 120px;
+}
+
+.premiere_img {
+    width: 30%;
+    height:auto;
+    float: left;
+    margin-left: 30px;
+}
+
+.seconde_img {
+    float: right;
+    width: 40%;
+    height: auto;
+    margin-right: 30px;
+}
+
+.troisieme_img {
+    float: left;
+    width: 40%;
+    height: auto;
+    margin-left:30px;
+}
+
+.premiere_img~p {
+    width: 700px;
+}
+
+.seconde_img~p {
+    width: 500px;
+}
+
+.troisieme_img~p {
+    margin-top: 115px;
+    width: 900px;
+}
+
+article>p {
+    transform: translateX(20px);
+}
+
+/* Ceci est la fleche qui permet a un utilisateur de remonter facilement en haut de la page, surtout pour les utilisateurs ayant des difficultées */
+.fleche_haut {
+    width: 50px;
+    height: auto;
+    transform: translateX(-110px);
+    border: 7px solid #5a3d2a;
+    border-radius: 30px;
+    transition: 0.2s ease-out;
+    margin: 30px 30px 30px 100%;    /* top | right | bottom | left */
+}
+
+.fleche_haut:hover {
+    border-color: #37261a;
+}
+
+.fleche_haut:active {
+    border-color: black;
+}
+
+/* --------- ASIDE -------- */
+
+.menu_deroule {
+    top: 0px;
+    position: fixed;
+    right: 100%;
+    /*transform: translateX(100%);*/
+    width: 10%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.171);
+    z-index: 60;
+}
+
+
+.derouleur_aside {
+    position: fixed;
+    top:0px;
+    right: 100%;
+    transform: translateX(100%);
+    width: 2.5%;
+    height: 100%;
+    background-color: purple;
+    z-index: 20;
+}
+
+.derouleur_aside>img {
+    width: 90%;
+    height: auto;
+    z-index: 40;
+    margin: auto;
+}
+
+.derouleur_aside>img:active .menu_deroule {
+    opacity: 0;
+}
+
+
+/* ----- FOOTER ----- */
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    text-align: center;
+    background-color: #f1893c;
+    font-size: 1.063rem;
+}
+
+.auteur {
+    margin-top: -10px;
+}
+
+.auteur>img {
+    margin-top: -20px;
+    width: 100px;
+    height: auto;
+}
+
+.footer_flex2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact {
+    background-color: #5a3d2a;
+    border: 5px solid #5a3d2a;
+    border-radius: 23px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease-out;
+    padding: -3px 0px -3px 0px;
+}
+
+.contact:hover {
+    background-color: #f1893c;
+    color: #5a3d2a;
+}
+
+.contact:active {
+    background-color: #5a3d2a;
+    color: #f1893c;
+}
+
+.plan_site {
+    color: #5a3d2a;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="asie.css">
+    <title>Les Montagnes Kii</title>
+</head>
+
+<body>
+    <!-- la class "wrap" sert à pouvoir reunir dans un seul et unique block le header et le nav pour ameliorer le positionnement-->
+    <div class="wrap">
+        <header>
+            <ul class="container_header" title="Retour au menu">
+                <li>
+                    <a href="menu.html">
+                        <div class="flex_gauche">
+                            <img src="../img/logo.svg" alt="" />
+                            Les Merveilles du monde
+                        </div>
+                    </a>
+                </li>
+                <li class="flex_droite" title="Contactez-moi"><a href="../en/menu.html">ENG</a></li>
+            </ul>
+        </header>
+        <nav>
+            <ul class="menu">
+                <!-- L'ID #active sert a definir l'element de la page dans laquelle l'utilisateur est, ses regles d'utilisation sont dans le CSS-->
+                <li><a href="menu.html">Acceuil</a></li>
+                <li class="nav_element">
+                    <a href="#afrique">Afrique</a>
+                    <img class="deroulant" src="../img/deroulant.svg" alt="" />
+                    <!-- On créé des <li> dans des <li> pour faire le menu deroulant-->
+                    <div class="sous_menu">
+                        <ul>
+                            <li><a href="desert_danakil.html">Le désert du Danakil</a></li>
+                            <li><a href="cascades_ouzoud.html">Les Cascades d’Ouzoud</a></li>
+                            <li><a href="#">Le Tsingy Rouge à Madagascar</a></li>
+                            <li><a href="#">Les pyramides de Gizeh</a></li>
+                            <li><a href="#">Le désert du Namib</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav_element">
+                    <a href="#asie" class="active">Asie</a>
+                    <img class="deroulant" src="../img/deroulant.svg" alt="" />
+                    <div class="sous_menu">
+                        <ul>
+                            <li class="active_li"><a href="montagne_kii.html">Chaine de montagnes Kii</a></li>
+                            <li><a href="#">Grande Muraille de Chine</a></li>
+                            <li><a href="#">La vieille ville de Hanoï</a></li>
+                            <li><a href="#">Le temple d’Angkor</a></li>
+                            <li><a href="#">Royaume de Pagan</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav_element">
+                    <a href="#europe">Europe</a>
+                    <img class="deroulant" src="../img/deroulant.svg" alt="" />
+                    <div class="sous_menu">
+                        <ul>
+                            <li><a href="alhambra.html">L’Alhambra</a></li>
+                            <li><a href="#">Les Cascades des Tufs</a></li>
+                            <li><a href="#">L'île de Skye</a></li>
+                            <li><a href="#">La sagrada familia</a></li>
+                            <li><a href="#">Les châteaux de versaille</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!---------- MAIN ---------- Le <main> est la partie contenue de la page -->
+    <main>
+        <!-- Ce Span sert a faire fonctionner la fleche du bas-->
+        <span id="top_page"></span>
+        <img src="../img/kii_background.jpg" alt="" />
+        <h1>Montagne &nbsp; Kii</h1>
+        <section class="contenu">
+            <h3>Une chaine de montagne et de <u>traditions</u> antique.</h3>
+            <!-- Les ID d'ancrage sont decalé par rapport a leur contenu car l'ancre se deplace trop bas de base-->
+            <section>
+                <article>
+                    <h2>&#62; La chaine de Montagne Kii:</h2>
+                    <p>Nichés au cœur de <b>forêts</b> denses, dans <b>les monts Kii</b>, sur une péninsule qui surplombe l'océan
+                        Pacifique, dans la partie méridionale de la partie continentale du Japon, trois sites sacrés -
+                        <b>Yoshino et Omine, Kumano Sanzan et Koyasan</b>, ils sont reliés par des chemins de pèlerinage aux
+                        anciennes capitales de Nara et Kyoto. L'ensemble de ces sites, <b>les chemins de pèlerinage</b> qui les
+                        relient, et les forêts environnantes forment un paysage culturel qui reflète la fusion du
+                        <b>shintoïsme</b>, enraciné dans <b>l'antique tradition japonaise</b> du culte de la nature, et du bouddhisme,
+                        venu de la <b>Chine</b> et de la <b>péninsule coréenne.</b></p>
+                </article>
+                <article>
+                    <h2>&#62; La chaîne de montagnes Kii en donées :</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="2">La chaîne de montagne :</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Emplacement</td>
+                                <td>Péninsule de Kii [Japon]</td>
+                            </tr>
+                            <tr>
+                                <td>Surface</td>
+                                <td>506, ha (ou 1 251 acres)</td>
+                            </tr>
+                            <tr>
+                                <td>Zone tampon</td>
+                                <td>12 100 ha (ou 30 000 acres)</td>
+                            </tr>
+                            <tr>
+                                <td>Coordonnées</td>
+                                <td>33°50'13"N 135°46'35"E</td>
+                            </tr>
+                            <tr>
+                                <td>Critères culturel</td>
+                                <td>II ; III ; IV ; VI</td>
+                            </tr>
+                            <tr>
+                                <td>Reference</td>
+                                <td>PM de l'UNESCO depuis 2004</td>
+                            </tr>
+                            <tr>
+                                <td>Référence</td>
+                                <td>1142 bis</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </section>
+        <a href="#top_page"><img src="../img/fleche_haut.svg" alt="" class="fleche_haut" /></a>
+    </main>
+    <!-- ------- ASIDE ------- Partie supplementaire sur le coté du site-->
+    <!-- <aside>
+        <div class="menu_deroule">
+
+        </div>
+        <div class="derouleur_aside">
+            <img src="../img/menu.svg" alt=""/>
+        </div>
+    </aside> -->
+    <!------------ FOOTER ----------- il est la partie descriptive basse du site -->
+    <footer>
+        <!-- L'arborescence est pensée pour etre utilisé en tant qu'elements "flexbox" -->
+        <div class="auteur">
+            <h4>Auteur : Alixan BALU</h4>
+            <img src="../img/signature.png" alt="signature" />
+        </div>
+        <div class="footer_flex2">
+            <a href="#" class="plan_site">
+                <p>Plan du site &#62;</p>
+            </a>
+            <a href="#" class="contact">
+                <p>CONTACT</p>
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
